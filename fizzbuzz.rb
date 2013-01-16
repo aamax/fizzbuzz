@@ -90,4 +90,8 @@ describe "FizzBuzz" do
     @game.value[14].should == "FIZZBUZZ"
   end
   
+  it "test all values from 1 to 100" do
+    
+  end
+  
 end
