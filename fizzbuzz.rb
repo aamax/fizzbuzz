@@ -20,13 +20,13 @@ class FizzBuzz
     when (n % 3 == 0) && (n % 5 == 0)
       then @value <<"FIZZBUZZ"
     when n % 3 == 0
-      the @value << "FIZZ"
+      then @value << "FIZZ"
     when n % 5 == 0
-      the @value == "BUZZ"
+      then @value << "BUZZ"
     else @value << n
     end
    end
-     end
+
   end
 end
 
@@ -45,10 +45,16 @@ describe "FizzBuzz" do
      @game.play
     
     (1..100).each do |n|
-      @game.value[n-1].should == n unless ((n % 3 == 0) || (n % 5 == 0))
-      @game.value[n-1].should == "FIZZBUZZ" if ((n % 3 == 0) && (n % 5 == 0))
-      @game.value[n-1].should == "BUZZ" if n % 5 == 0
-      @game.value[n-1].should == "FIZZ" if n % 3 == 0
+      unless ((n % 3 == 0) || (n % 5 == 0))
+        @game.value[n-1].should == n
+      else
+        if ((n % 3 == 0) && (n % 5 == 0))
+          @game.value[n-1].should == "FIZZBUZZ"
+        else
+          @game.value[n-1].should == "BUZZ" if n % 5 == 0
+          @game.value[n-1].should == "FIZZ" if n % 3 == 0
+        end
+      end
     end
    
   end
